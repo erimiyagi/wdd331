@@ -4,25 +4,142 @@
     <meta charset="utf-8" />
     <title>Sliding Menu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="/styles.css" />
-    <script type="text/javascript" src="toggle.js"></script>
   </head>
 
-  <input type="checkbox" class="openMenu" id="openMenu">
-  <label for="openMenu" class="IconToggle">
-    <div class="spinner diagonal part-1"></div>
-    <div class="spinner horizontal"></div>
-    <div class="spinner diagonal part-2"></div>
-  </label>
-  
-  <header>
-    <div id="sidebarMenu">
-        <div class="menu-icon" id="menu-icon" onclick="toggleNav()">
-                    <span></span>
-        </div>
-            <ul id="Inner" class="hide">
-                 <li><a href="https://vanila.io" target="_blank">Company</a></li>
-                 <li><a href="https://instagram.com/plavookac" target="_blank">Instagram</a></li>
-                 <li><a href="https://twitter.com/plavookac" target="_blank">Twitter</a></li>
-            </ul>
-    </header>       
+  <div id="window"></div> 
+  <nav id="nav">
+    <ul>
+      <li><a href="#">Twitter</a></li>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">YouTube</a></li>
+    </ul>
+  </nav>
+  <div id="menu">
+    <span class="line" id="toggle1"></span>
+    <span class="line" id="toggle2"></span>
+    <span class="line" id="toggle3"></span>
+  </div>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+
+a{
+  text-decoration: none;
+  color: aliceblue;
+  font-family: 'Abel', sans-serif;
+  font-size: 1.6em;
+}
+
+a:hover{
+  color:blueviolet;
+  transition: .5s;
+}
+
+#nav{
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  width: 30%;
+  left: -30%;
+  background: linear-gradient(180deg, #dd6565 0%, #fbbf3f 100%);
+  transition: .6s;
+}
+
+#nav ul{
+  padding-top: 100px;
+}
+
+#nav ul li{
+  list-style-type: none;
+}
+
+#menu {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  height: 43px;
+}
+
+.line {
+  display: block;
+  position: absolute;
+  width: 40px;
+  height: 2px;
+  background-color: #dd6565;
+  transition: .5s;
+}
+
+.line:hover{
+  color:white;
+}
+#toggle1 {
+  top: 0;
+}
+#toggle2 {
+  top: 20px;
+}
+
+#toggle3 {
+  bottom: 0px;
+}
+
+#window{
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  left: -100%;
+}
+
+.x{
+  transform: translateX(100%);
+}
+
+.inner{
+  transform: translateX(100%);
+}
+.line_1,.line_2,.line_3{
+  background: #fff;
+}
+.line_1,.line_2,.line_3{
+  background: #fff;
+}
+.line_3:hover{
+  background: #fff;
+}
+.line_1 {
+  transform: translateY(20px) rotate(-45deg);
+  top: 0;
+}
+.line_2 {
+  display: none;
+}
+.line_3 {
+  transform: translateY(-20px) rotate(45deg);
+  bottom: 0;
+}
+
+@media (max-width: 60rem) {
+  #menu {
+    display: block;
+  }
+}
+
+</style>
+
+<script>
+  function menu(){
+    document.getElementById('toggle1').classList.toggle('line_1');
+    document.getElementById('toggle2').classList.toggle('line_2');
+    document.getElementById('toggle3').classList.toggle('line_3');
+    document.getElementById('nav').classList.toggle('inner');
+    document.getElementById('window').classList.toggle('x'); 
+  };
+    document.getElementById('menu').addEventListener('click',function(){
+    menu();
+  });
+    document.getElementById('window').addEventListener('click',function(){
+    menu();
+  });
+
+</script>
